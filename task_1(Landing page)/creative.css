@@ -1,0 +1,98 @@
+html{
+    font-size:14px;
+    height:100%;
+}
+
+body{
+     padding:0;
+     margin:0;
+     height:100%;
+     font-family: "Satisfy", cursive;
+     font-weight: 400;
+     font-style: normal;
+     overflow: hidden;
+}
+
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding: 0;
+    display:flex;
+    justify-content:center;
+    align-items:center ;
+    z-index: 100;
+}  
+
+.logo{
+    font-size: 20px;
+    font-family: "Protest Revolution", sans-serif;
+    font-weight: 500;
+    color: rgb(192, 211, 249);
+    text-decoration:none;
+    
+}
+.navbar a{
+        font-weight:500;
+        color:rgb(216, 166, 115);
+        text-decoration:none;
+        font-size: 20px;
+        margin-left: 25px;
+        float:left;
+    }
+      
+.hero{
+        height:100vh;
+        display:flex;
+        align-items:center;
+        padding:0 10%;
+}
+
+.container{
+    max-width:600px;
+}
+.container h1{
+    font-size:66px;
+    font-weight: 700;
+    color: rgb(252, 212, 172);
+}
+.container h2{
+    font-size:36px;
+    font-weight: 700;
+    color: antiquewhite;
+}
+.container p{
+    font-size:25px;
+    color: blanchedalmond;
+    font-weight: 700;
+}
+.container button{
+    width:140px;
+    height:50px;
+    align-content: center;
+    border-radius: 60px;
+    font-size: 20px;
+    color:rgb(102, 65, 40);
+    font-family: "Satisfy", cursive;
+    background-color: rgb(255, 160, 45);
+    border:0;
+    cursor: pointer;
+
+    transition: background-color 0.15s,
+    color 0.15s;
+}
+
+
+.container button:hover{
+    background-color:rgb(228, 207, 190);
+    color:rgb(92, 18, 18);
+}
+
+.container button:active{
+    opacity: 0.7;
+}
+
+
+
