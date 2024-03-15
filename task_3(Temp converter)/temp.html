@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin:0;
+            background: linear-gradient(to right, rgb(28, 28, 153),rgb(82, 29, 82));
+        }
+
+        .converter{
+            text-align: center;
+            max-width: 400px;
+            margin: auto;
+            padding:20px;
+            background-color: rgb(222, 230, 237);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0 0 0 0);
+        }
+        select,input{
+            width:100%;
+            padding:10px;
+            margin:10px 0;
+            border:1px solid rgb(182, 160, 160);
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button{
+            background-color: rgb(23, 96, 72);
+            color:rgb(231, 236, 241);
+            padding:10px;
+            border:none;
+            width:100%;
+            cursor:pointer;
+            border-radius: 5px;
+        }
+
+        button:hover{
+            background-color: rgb(80, 186, 151);
+        }
+        #result{
+            width:100%;
+            padding: 10px;
+            margin-top: 10px;
+            border:1px solid white;
+            border-radius: 5px;
+            outline: none;
+            font-weight: bold;
+            color:black;
+        }
+
+        @media  screen and (max-width:500px) {
+            .converter{
+                width:90%;
+            }
+        }
+
+        @keyframes fadeIn{
+            from{
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+            h2{
+                color:black;
+                animation: fadeIn 1s ease-in-out;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="converter">
+        <h2>Tempertaure Converter</h2>
+        <label for ="fromunit">From:</label>
+        <select id="fromunit">
+            <option value="C">Celsius</option>
+            <option value="F">Fahrenheit</option>
+            <option value="K">Kelvin</option>
+            <option value="R">Rankine</option>
+        </select>
+        <label for="tounit">To:</label>
+        <select id="tounit">
+            <option value="C">Celsius</option>
+            <option value="F">Fahrenheit</option>
+            <option value="K">Kelvin</option>
+            <option value="R">Rankine</option>
+        </select>
+        <label for="temperature">Temperature</label>
+        <input type="number" id="temperature" placeholder="Enter Temperature">
+        <button onclick="convert()">Convert</button>
+
+        <label for="result">Result:</label>
+        <div id = "result" style="height:10px; width:395px; background-color: rgb(100, 172, 140); ">
+    </div>
+    <script>
+        function convert(){
+            var fromunit = document.getElementById('fromunit').value;
+            var tounit = document.getElementById('tounit').value;
+            console.log(tounit);
+            
+            var temperature = parseFloat(document.getElementById('temperature').value);
+            console.log(temperature,typeof(temperature));
+
+            var convertedvalue;
+            var resultunit;
+
+            //perform conversion logic
+
+            switch(fromunit){
+                case 'C':
+                    if(tounit === 'F'){
+                        convertedvalue=(temperature* 9/5)+32;
+                        resultunit='F';
+                    }else if(tounit === 'K'){
+                        convertedvalue= temperature + 273.15;
+                        resultunit='K';
+                    }else if(tounit === 'R'){
+                        convertedvalue= temperature + 273.15;
+                        resultunit='R';
+                    }else{
+                        convertedvalue= temperature;
+                        resultunit='C';    
+                    }
+                    break;
+
+                    case 'F':
+                    if(tounit === 'C'){
+                        convertedvalue=(temperature - 32) * 5/9;
+                        resultunit='C';
+                    }else if(tounit === 'K'){
+                        convertedvalue= (temperature - 32) * 5/9 + 273.15;
+                        resultunit='K';
+                    }else if(tounit === 'R'){
+                        convertedvalue= temperature + 459.67;
+                        resultunit='R';
+                    }else{
+                        convertedvalue= temperature;
+                        resultunit='F';    
+                    }
+                    break;
+
+                    case 'K':
+                    if(tounit === 'C'){
+                        convertedvalue=temperature - 273.15;
+                        resultunit='C';
+                    }else if(tounit === 'K'){
+                        convertedvalue= (temperature - 273.15) * 9/5 +32;
+                        resultunit='K';
+                    }else if(tounit === 'R'){
+                        convertedvalue= temperature * 9/5;
+                        resultunit='R';
+                    }else{
+                        convertedvalue= temperature;
+                        resultunit='K';    
+                    }
+                    break;
+
+                    case 'R':
+                    if(tounit === 'C'){
+                        convertedvalue=(temperature - 491.67) * 5/9;
+                        resultunit='C';
+                    }else if(tounit === 'K'){
+                        convertedvalue= temperature - 459.67;
+                        resultunit='K';
+                    }else if(tounit === 'R'){
+                        convertedvalue= temperature * 5/9;
+                        resultunit='R';
+                    }else{
+                        convertedvalue= temperature;
+                        resultunit='R';    
+                    }
+                    break;
+
+
+            }
+
+            document.getElementById('result').innerText = convertedvalue.toFixed(2) + ' ' +resultunit;
+
+        }
+    </script>
+</body>
+</html>
